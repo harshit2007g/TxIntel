@@ -1,17 +1,23 @@
 import React from 'react'
-
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+gsap.registerPlugin(useGSAP);
 const Navbar = () => {
+
+    useGSAP(() => {
+        gsap.from("#title", { x: -40 }, { ease: 'expo.in' });
+    })
     return (
         <nav className="flex items-center justify-between px-6 h-16 bg-white border-b border-gray-200">
 
 
-            <div className="text-4xl font-semibold tracking-tight text-gray-900">
+            <div className="px-6 text-4xl font-semibold tracking-tight text-gray-900" id='title'>
                 Tx<span className="text-blue-500">Intel</span>
             </div>
             <div className="text-2xl flex items-center gap-8">
-                <a href="#" className=" text-gray-500 hover:text-gray-900 transition-colors">Overview</a>
-                <a href="#" className=" text-gray-500 hover:text-gray-900 transition-colors">Transactions</a>
-                <a href="#" className=" text-gray-500 hover:text-gray-900 transition-colors">Predict</a>
+                <a id="view" href="#" className=" text-gray-500 hover:text-gray-900 transition-colors">Overview</a>
+                <a id="tx" href="#" className=" text-gray-500 hover:text-gray-900 transition-colors">Transactions</a>
+                <a id="pred" href="#" className=" text-gray-500 hover:text-gray-900 transition-colors">Predict</a>
             </div>
 
             <div className="flex items-center gap-3">
