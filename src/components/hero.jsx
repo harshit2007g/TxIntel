@@ -4,12 +4,12 @@ import { useGSAP } from '@gsap/react';
 
 const HeroSection = () => {
     useGSAP(()=>{
-        gsap.from("#left-box",{y:-70});
-        const tl = gsap.timeline();
+      const tl = gsap.timeline();
+        tl.from("#left-box",{y:-70});
         tl.from("#right-3",{x:500,ease:'expo.in',delay:0});
         tl.from("#right-2",{x:500,ease:'expo.in'},'+=0.02');
         tl.from("#right-1",{x:500,ease:'expo.in'},'+=0.02');
-    })
+    });
   return (
     <section
       style={{

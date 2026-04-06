@@ -1,6 +1,7 @@
 import React from 'react'
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { Link } from 'react-router-dom';
 gsap.registerPlugin(useGSAP);
 const Navbar = () => {
 
@@ -15,9 +16,9 @@ const Navbar = () => {
                 Tx<span className="text-blue-500">Intel</span>
             </div>
             <div className="text-2xl flex items-center gap-8">
-                <a id="view" href="#" className=" text-gray-500 hover:text-gray-900 transition-colors">Overview</a>
-                <a id="tx" href="#" className=" text-gray-500 hover:text-gray-900 transition-colors">Transactions</a>
-                <a id="pred" href="#" className=" text-gray-500 hover:text-gray-900 transition-colors">Predict</a>
+                <Link to='/'  className=" text-gray-500 hover:text-gray-900 transition-colors">Overview</Link>
+                <Link to='/transaction' className=" text-gray-500 hover:text-gray-900 transition-colors">Transaction</Link>
+                <Link to='/analyze' className=" text-gray-500 hover:text-gray-900 transition-colors">Analyze</Link>
             </div>
 
             <div className="flex items-center gap-3">
