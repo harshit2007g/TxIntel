@@ -40,7 +40,7 @@ body {
 
 .tx-sub {
   font-size: 14px;
-  color: #blue;
+  color: #2563eb;
   
 }
 
@@ -169,4 +169,3 @@ body {
 
   .go-btn:hover { background: #333; }
   .go-btn:disabled { background: #e2e2e2; color: #aaa; cursor: not-allowed; }
-;
