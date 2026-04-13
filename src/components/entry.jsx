@@ -1,92 +1,7 @@
-@import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500&display=swap');
- 
-html {
-  overflow-x: hidden;
-}
-
-body {
-  overflow-x: hidden;
-  position: relative; /* this is the key */
-}
-
-.tx-container {
-  background: #f5f7fb;
-  padding: 20px;
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
-}
-
-.tx-box {
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  max-width: 900px;
-  margin: 0 auto;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
-
-.tx-header {
-  padding: 16px 20px;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.tx-title {
-  font-weight: 600;
-  font-size: 20px;
-  color: #555;
-  margin-bottom: 6px;
-}
-
-.tx-sub {
-  font-size: 14px;
-  color: #blue;
-  
-}
-
-.tx-body {
-  padding: 16px 20px;
-}
-
-.tx-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
-  font-size: 14px;
-}
-
-.label {
-  color: #6b7280;
-}
-
-.value {
-  color: #111827;
-}
-
-.link {
-  color: #2563eb;
-  cursor: pointer;
-  word-break: break-all;
-}
-
-.status {
-  padding: 3px 8px;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: 500;
-}
-
-.status.success {
-  background: #d1fae5;
-  color: #065f46;
-}
-
-.divider {
-  height: 1px;
-  background: #e5e7eb;
-  margin: 12px 0;
-}
-
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+const styles = `
+  @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500&display=swap');
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -170,3 +85,42 @@ body {
   .go-btn:hover { background: #333; }
   .go-btn:disabled { background: #e2e2e2; color: #aaa; cursor: not-allowed; }
 `;
+
+export default function Entry() {
+  const [hash, setHash] = useState("");
+  const navigate = useNavigate();
+  function handleSearch() {
+    navigate(`/detail/${hash.trim()}`)
+    console.log("Search:", hash.trim());
+  }
+
+  return (
+    <>
+      <style>{styles}</style>
+      <div className="page">
+        <p className="title">Transaction Lookup</p>
+
+        <input
+          className="hash-input"
+          type="text"
+          placeholder="0x..."
+          value={hash}
+          onChange={e => setHash(e.target.value)}
+          onKeyDown={e => e.key === "Enter" && handleSearch()}
+          spellCheck={false}
+          autoComplete="off"
+        />
+
+        <button
+          className="go-btn"
+          onClick={handleSearch}
+          disabled={!hash.trim()}
+        >
+          Search
+        </button>
+
+        <p className="hint">Press Enter or click Search</p>
+      </div>
+    </>
+  );
+}
